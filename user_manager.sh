@@ -43,7 +43,7 @@ group_exists() {
 add_user() {
     echo "------ Add New User ------"
     read -p "Enter username: " username
-    
+
     if [[ -z "$username" ]]; then
         echo "ERROR: Username cannot be empty."
         return 1
@@ -81,6 +81,11 @@ add_user() {
 delete_user() {
     echo "------ Delete User ------"
     read -p "Enter username: " username
+
+    if [[ -z "$username" ]]; then
+        echo "ERROR: Username cannot be empty."
+        return 1
+    fi
 
     if ! user_exists "$username"; then
         echo "ERROR: User '$username' does not exist."
